@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     if (!trainer) return;
 
-    fetch(`http://localhost:8000/api/trainers/${trainer.id}/pokemon`, {
+    fetch(`https://pokedex-api-production-a7ea.up.railway.app/api/trainers/${trainer.id}/pokemon`, {
       headers: { 'Accept': 'application/json' }
     })
       .then(res => {
@@ -28,7 +28,7 @@ function App() {
     e.preventDefault();
     
     try {
-      const res = await fetch('http://localhost:8000/api/trainers', {
+      const res = await fetch('https://pokedex-api-production-a7ea.up.railway.app/api/trainers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ function App() {
     const generatedNickname = `${randomPrefix} ${randomSuffix}`;
 
     try {
-      const res = await fetch(`http://localhost:8000/api/trainers/${trainer.id}/pokemon`, {
+      const res = await fetch(`https://pokedex-api-production-a7ea.up.railway.app/api/trainers/${trainer.id}/pokemon`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
