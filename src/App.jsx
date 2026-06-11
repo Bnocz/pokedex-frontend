@@ -4,7 +4,7 @@ function App() {
   const [trainerName, setTrainerName] = useState('');
   const [trainerPhone, setTrainerPhone] = useState('');
   const [trainer, setTrainer] = useState(null);
-  
+  const [catchCount, setCatchCount] = useState(0);
   const [roster, setRoster] = useState([]);
 
   // Fetch the roster automatically when the trainer logs in
@@ -53,12 +53,31 @@ function App() {
 
   async function catchPokemon() {
     const randomPokemonId = Math.floor(Math.random() * 1025) + 1;
-
     const prefixes = ['Shadow', 'Brave', 'Cursed', 'Shiny', 'Phantom', 'Iron', 'Crimson', 'Astral'];
     const suffixes = ['Paladin', 'Rogue', 'Warlock', 'Goblin', 'Hero', 'Knight', 'Ronin', 'Mage'];
     const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
     const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
     const generatedNickname = `${randomPrefix} ${randomSuffix}`;
+    const newCount = catchCount + 1;
+    setCatchCount(newCount);
+
+    // Fifth catch — inject secret pokemon
+    if (newCount === 5) {
+        const secretPokemon = {
+            caught: {
+                id: 9999,
+                nickname: 'BERTRAM (luv u potato(also locked))',
+                level: 100,
+            },
+            species: {
+                name: 'bertrameon',
+                sprite: '/public/PXL_20260611_054726193.jpg', // replace with any image URL you want
+                types: ['dark', 'fire']
+            }
+        };
+        setRoster(prev => [...prev, secretPokemon]);
+        return; // skip the API call
+    }
 
     try {
       const res = await fetch(`https://pokedex-api-production-a7ea.up.railway.app/api/trainers/${trainer.id}/pokemon`, {
