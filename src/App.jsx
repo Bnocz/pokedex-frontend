@@ -141,9 +141,9 @@ function App() {
                   alt={entry.species?.name} 
                   style={{ width: '120px', height: '120px', imageRendering: 'pixelated' }} 
                 />
-                <h3 style={{ margin: '10px 0 5px 0' }}>{entry.caught_pokemon?.nickname}</h3>
+                <h3 style={{ margin: '10px 0 5px 0' }}>{entry.caught?.nickname}</h3>
                 <p style={{ margin: '0 0 10px 0', color: '#666', textTransform: 'capitalize' }}>
-                  {entry.species?.name} (Lv. {entry.caught_pokemon?.level})
+                  {entry.species?.name} (Lv. {entry.caught?.level})
                 </p>
                 
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '5px' }}>
