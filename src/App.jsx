@@ -62,16 +62,16 @@ function App() {
     setCatchCount(newCount);
 
     // Fifth catch — inject secret pokemon
-    if (newCount === 5) {
+    if (newCount === 3) {
         const secretPokemon = {
             caught: {
                 id: 9999,
-                nickname: 'BERTRAM (luv u potato(also locked))',
+                nickname: 'BERTRAM (luv u potato[also locked])',
                 level: 100,
             },
             species: {
                 name: 'bertrameon',
-                sprite: '/public/PXL_20260611_054726193.jpg', // replace with any image URL you want
+                sprite: '/bertram.jpg', // replace with any image URL you want
                 types: ['dark', 'fire']
             }
         };
